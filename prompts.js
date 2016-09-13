@@ -44,12 +44,37 @@ palindrome("race CAR"); // true
 *Note*:
 You'll need to remove all non-alphanumeric characters (punctuation, spaces and symbols)
 */
-
+var loop = function(collection,callback){
+  for(var i = 0; i < collection.length; i++){
+  callback(collection[i],i)
+  }
+}
+var reversedString = function(string){
+  var reversedString = [];
+  //loop through the array of letters
+  loop(string,function(letter){
+    //Need to reverse the string by sending the letters in reverse order into the new array
+    reversedString.unshift(letter);
+    });
+  //Now we'll use .join to return the array as a string
+  return reversedString.join("");
+//Used the functions loop and reversedString to create isPalindrome
+}
 var isPalindrome = function(str) {
   // Your Code Here
+  //Created a variable to act as the reverseString function
+  var otherString = reversedString(string)
+  //Check is the inputString matches as inserted and in reverse and returns a booleon
+  if(otherString===string){
+    return true;
+    }else{
+      return false;
+  }
+
+
 };
-
-
+//isPalindrome("dad");
+//isPalindrome("bad");
 /**********************************************************************************************************/
 
 /*
@@ -198,10 +223,23 @@ If the property already exists, overwrite it's current value with the new value.
 Return the object to the user.
 */
 
+//Created objects for testing
+var objOne = {name: 'Albrey', favoriteMovie: 'Inception'};
+var objTwo = {name: 'Albrey', favoriteMovie: 'Inception', property: '1'};
+//Number 11 is Dana's work
 var addPropertyAndValue = function(object, property, value) {
   // Your Code Here
+  object[property] = value;
+  // console.log(object)
+  return object;
 };
 
+var test1 = addPropertyAndValue(objOne, "Otherproperty", 4);
+console.log(test1.property);
+
+var test2 = addPropertyAndValue(objTwo, "Otherproperty", 4);
+console.log(test2.property);
+//Tests were successful
 
 /*********************************************************************************************************************/
 
